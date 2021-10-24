@@ -5,10 +5,21 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.165" />
         <entry key="../../.gradle/caches/transforms-3/97e7ec19bd11dff7ae3d399ac9d0fa5b/transformed/core-1.5.0/res/layout/custom_dialog.xml" value="0.20516304347826086" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/drawable/btn_dropdown.xml" value="0.2074074074074074" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.20108695652173914" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/drawable/bbbb.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/btn_dropdown.xml" value="0.2074074074074074" />
         <entry key="app/src/main/res/drawable/dialog_shape.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/nav_fragment.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/aaaa.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/dialog_layout.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/nav_fragment.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/question_fragment.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/question_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tweet.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2111111111111111" />

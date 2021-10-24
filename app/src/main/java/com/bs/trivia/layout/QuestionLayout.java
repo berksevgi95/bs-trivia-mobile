@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.navigation.Navigation;
 
 import com.bs.trivia.MainActivity;
 import com.bs.trivia.R;
@@ -31,26 +32,10 @@ public class QuestionLayout extends CardView {
     CorrectAnswerLayout correctDialog;
     WrongAnswerLayout wrongDialog;
     TimesUpLayout timesUpLayout;
-    OnNextQuestionEvent onNextQuestion;
-    OnStartEvent onStart;
-    OnSuccessEvent onSuccess;
-    OnFailureEvent onFailure;
-    OnResetEvent onReset;
+    GenericEvent onNextQuestion, onStart, onSuccess, onFailure, onReset;
 
-    public interface OnNextQuestionEvent {
-        void trigger(int index);
-    }
-    public interface OnSuccessEvent {
-        void trigger();
-    }
-    public interface OnFailureEvent {
-        void trigger();
-    }
-    public interface OnResetEvent {
-        void trigger();
-    }
-    public interface OnStartEvent {
-        void trigger();
+    public interface GenericEvent {
+        void trigger(Object... args);
     }
 
     public QuestionLayout(Context context) {
@@ -84,6 +69,7 @@ public class QuestionLayout extends CardView {
         wrongDialog.setGoToWelcomePageEvent((e) -> {
             onReset.trigger();
             wrongDialog.hide();
+            Navigation.findNavController(view).navigate(R.id.action_questionFragment_to_navFragment);
         });
         wrongDialog.setTryAgainEvent((e) -> {
             onFailure.trigger();
@@ -103,6 +89,7 @@ public class QuestionLayout extends CardView {
         view.animate()
                 .translationY(100)
                 .alpha(0f);
+        view.setVisibility(INVISIBLE);
     }
 
     public void generateQuestions(String result) throws Exception {
@@ -123,10 +110,10 @@ public class QuestionLayout extends CardView {
         }
     }
 
-    public void startGame() {
+    public void startGame(int category, String difficulty) {
         new Thread(() -> {
             Request
-                .get("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple")
+                .get("https://opentdb.com/api.php?amount=10&category=" + category + "&difficulty=" + difficulty + "&type=multiple")
                 .then((result) -> {
                         try {
                             generateQuestions(result);
@@ -178,6 +165,7 @@ public class QuestionLayout extends CardView {
 
             onStart.trigger();
 
+            view.setVisibility(VISIBLE);
             view.animate()
                 .translationY(0)
                 .alpha(1f);
@@ -188,23 +176,23 @@ public class QuestionLayout extends CardView {
         timesUpLayout.show();
     }
 
-    public void onNextQuestion(OnNextQuestionEvent onNextQuestion) {
+    public void onNextQuestion(GenericEvent onNextQuestion) {
         this.onNextQuestion = onNextQuestion;
     }
 
-    public void onStart(OnStartEvent onStart) {
+    public void onStart(GenericEvent onStart) {
         this.onStart = onStart;
     }
 
-    public void onSuccess(OnSuccessEvent onSuccess) {
+    public void onSuccess(GenericEvent onSuccess) {
         this.onSuccess = onSuccess;
     }
 
-    public void onFailure(OnFailureEvent onFailure) {
+    public void onFailure(GenericEvent onFailure) {
         this.onFailure = onFailure;
     }
 
-    public void onReset(OnResetEvent onReset) {
+    public void onReset(GenericEvent onReset) {
         this.onReset = onReset;
     }
 

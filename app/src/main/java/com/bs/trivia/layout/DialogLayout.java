@@ -23,7 +23,6 @@ public abstract class DialogLayout extends BottomSheetDialog {
     protected void onStart() {
         super.onStart();
         LottieAnimationView animationView = findViewById(R.id.animation_view);
-        assert animationView != null;
         animationView.setProgress(0);
         animationView.playAnimation();
     }
@@ -32,7 +31,6 @@ public abstract class DialogLayout extends BottomSheetDialog {
     protected void onStop() {
         super.onStop();
         LottieAnimationView animationView = findViewById(R.id.animation_view);
-        assert animationView != null;
         animationView.setProgress(0);
     }
 }
